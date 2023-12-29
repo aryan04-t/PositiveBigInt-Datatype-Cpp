@@ -6,17 +6,17 @@ using namespace std;
 
 class PositiveBigInt{
     private:
-        vector<int> num; 
+        vector<short> num; 
         PositiveBigInt() {}
 
     public:
 
         PositiveBigInt(string s){ 
 
-            int n = s.length(); 
-            int digit; 
+            short n = s.length(); 
+            short digit; 
 
-            for(int i = n-1; i >= 0; i--){
+            for(short i = n-1; i >= 0; i--){
                 if(s[i] >= 48 && s[i] <= 57){
                     digit = s[i] - '0';
                     num.push_back(digit);
@@ -49,13 +49,13 @@ class PositiveBigInt{
 
         PositiveBigInt(const PositiveBigInt& copy){
             
-            int n = copy.num.size();
+            short n = copy.num.size();
 
             while(!(this->num.empty())){
                 this->num.pop_back();
             }
 
-            for(int i=0; i < n; i++){
+            for(short i=0; i < n; i++){
                 this->num.push_back(copy.num[i]);
             }
 
@@ -73,7 +73,7 @@ class PositiveBigInt{
         */
 
         string toString();
-        PositiveBigInt betweenMultiplicationAdd(PositiveBigInt& ans, PositiveBigInt& ans2, int i);
+        PositiveBigInt betweenMultiplicationAdd(PositiveBigInt& ans, PositiveBigInt& ans2, short i);
 
         friend ostream& operator<<(ostream& os, const PositiveBigInt &obj);
         void operator=(const PositiveBigInt& obj);
@@ -85,9 +85,9 @@ class PositiveBigInt{
 string PositiveBigInt::toString(){
 
     string ans = "";
-    int n = this->num.size();
+    short n = this->num.size();
 
-    for(int i=n-1; i >= 0; i--){
+    for(short i=n-1; i >= 0; i--){
         ans.push_back(this->num[i] + '0');
     }
 
@@ -109,9 +109,9 @@ string PositiveBigInt::toString(){
 
 ostream& operator<<(ostream& os, const PositiveBigInt &obj){
 
-    int n = obj.num.size();
+    short n = obj.num.size();
     
-    for(int i=n-1; i >= 0; i--){
+    for(short i=n-1; i >= 0; i--){
         os << (obj.num[i]);
     }
 
@@ -132,13 +132,13 @@ ostream& operator<<(ostream& os, const PositiveBigInt &obj){
 
 void PositiveBigInt::operator=(const PositiveBigInt& copy){ 
     
-    int n = copy.num.size();
+    short n = copy.num.size();
 
     while(!(this->num.empty())){
         this->num.pop_back();
     }
 
-    for(int i=0; i < n; i++){
+    for(short i=0; i < n; i++){
         this->num.push_back(copy.num[i]); 
     }
 
@@ -159,8 +159,8 @@ void PositiveBigInt::operator=(const PositiveBigInt& copy){
 PositiveBigInt PositiveBigInt::operator+(PositiveBigInt &obj){
 
     PositiveBigInt ans; 
-    int n = this->num.size(); 
-    int m = obj.num.size(); 
+    short n = this->num.size(); 
+    short m = obj.num.size(); 
     
     if(m > n){
         PositiveBigInt temp(*this);
@@ -171,19 +171,19 @@ PositiveBigInt PositiveBigInt::operator+(PositiveBigInt &obj){
         m = obj.num.size();
     }
 
-    int data;
-    int digit;
-    int carry = 0;
+    short data;
+    short digit;
+    short carry = 0;
     
-    for(int i=0; i < m; i++){
+    for(short i=0; i < m; i++){
         data = this->num[i] + obj.num[i] + carry; 
         digit = data % 10;
         carry = data / 10;
         ans.num.push_back(digit);
     }
 
-    int i = m;
-    int temp = n;
+    short i = m;
+    short temp = n;
     while(i != temp){
         data = this->num[i] + carry;
         digit = data % 10;
@@ -212,16 +212,16 @@ PositiveBigInt PositiveBigInt::operator+(PositiveBigInt &obj){
 */
 
 
-PositiveBigInt PositiveBigInt::betweenMultiplicationAdd(PositiveBigInt& ans, PositiveBigInt& ans2, int i){
+PositiveBigInt PositiveBigInt::betweenMultiplicationAdd(PositiveBigInt& ans, PositiveBigInt& ans2, short i){
 
-    int n = ans.num.size();
-    int m = ans2.num.size();
+    short n = ans.num.size();
+    short m = ans2.num.size();
 
-    int data;
-    int digit;
-    int carry = 0;
+    short data;
+    short digit;
+    short carry = 0;
 
-    int j=0;
+    short j=0;
     for(; i < n; i++, j++){ 
         data = ans.num[i] + ans2.num[j] + carry; 
         digit = data % 10; 
@@ -244,7 +244,7 @@ PositiveBigInt PositiveBigInt::betweenMultiplicationAdd(PositiveBigInt& ans, Pos
 
 }
 /*
-    # Time and Space Complexity of "PositiveBigInt PositiveBigInt::betweenMultiplicationAdd(PositiveBigInt& ans, PositiveBigInt& ans2, int i);" 
+    # Time and Space Complexity of "PositiveBigInt PositiveBigInt::betweenMultiplicationAdd(PositiveBigInt& ans, PositiveBigInt& ans2, short i);" 
         --> T.C. = O(n + (n-m)) = O(n) 
         --> S.C. = O(1) 
     - Here, n = the length of ans.num vector, m = length of ans2.num vector 
@@ -260,8 +260,8 @@ PositiveBigInt PositiveBigInt::operator*(PositiveBigInt &obj){
 
 
     PositiveBigInt ans;
-    int n = this->num.size();
-    int m = obj.num.size();
+    short n = this->num.size();
+    short m = obj.num.size();
 
     if( (m == 1 && obj.num[0] == 0) || (n == 1 && this->num[0] == 0)){
         return PositiveBigInt("0");
@@ -277,12 +277,12 @@ PositiveBigInt PositiveBigInt::operator*(PositiveBigInt &obj){
     }
 
 
-    int multiply_data;
-    int multiply_digit;
-    int multiply_carry = 0;
+    short multiply_data;
+    short multiply_digit;
+    short multiply_carry = 0;
     
-    int i = 0;
-    for(int j=0; j < n; j++){
+    short i = 0;
+    for(short j=0; j < n; j++){
 
         multiply_data = (obj.num[i] * this->num[j]) + multiply_carry; 
         multiply_digit = multiply_data % 10;
@@ -296,13 +296,13 @@ PositiveBigInt PositiveBigInt::operator*(PositiveBigInt &obj){
     }
 
 
-    for(int i=1; i < m; i++){
+    for(short i=1; i < m; i++){
         
         multiply_carry = 0;
 
         PositiveBigInt ans2;
 
-        for(int j=0; j < n; j++){
+        for(short j=0; j < n; j++){
 
             multiply_data = (obj.num[i] * this->num[j]) + multiply_carry; 
             multiply_digit = multiply_data % 10;
@@ -342,14 +342,14 @@ int main(){
         string s1, s2;
         cin >> s1 >> s2;
 
-        int n;
+        short n;
         cin >> n;
     
         PositiveBigInt prev2 = s1;
         PositiveBigInt prev1 = s2;
         PositiveBigInt curr("0");
 
-        for (int i = 2; i < n; ++i) { 
+        for (short i = 2; i < n; ++i) { 
             PositiveBigInt temp = prev1 * prev1; 
             curr = prev2 + temp; 
             prev2 = prev1; 
@@ -359,7 +359,7 @@ int main(){
         cout << curr;
     
     }
-    catch(int num){
+    catch(short num){
         if(num == 101){
             cout << endl << endl;
             cout << "{ " << endl;

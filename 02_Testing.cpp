@@ -7,14 +7,14 @@ int main(){
         string s1, s2;
         cin >> s1 >> s2;
 
-        int n;
+        short n;
         cin >> n;
     
         PositiveBigInt prev2 = s1;
         PositiveBigInt prev1 = s2;
         PositiveBigInt curr("0");
 
-        for (int i = 2; i < n; ++i) { 
+        for (short i = 2; i < n; ++i) { 
             PositiveBigInt temp = prev1 * prev1; 
             curr = prev2 + temp; 
             prev2 = prev1; 
@@ -24,7 +24,7 @@ int main(){
         cout << curr;
     
     }
-    catch(int num){
+    catch(short num){
         if(num == 101){
             cout << endl << endl;
             cout << "{ " << endl;
