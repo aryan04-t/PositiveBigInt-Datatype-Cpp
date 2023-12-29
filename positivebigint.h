@@ -1,7 +1,7 @@
 // I have converted my "PositiveBigInt" niche datatype into a header file 
 
 // I call it a niche datatype, because it's not a full fledged data type, and calling it a "Incomplete Datatype" doesn't sounds cool to me ;) 
-// XD But jokes aside, this datatype just has few specific fucntions written for itself and few operators overloaded as per requirement for convenience that's why I call it a "Niche Datatype", because agreed, it is an incomplete datatype when it comes to the range of operators it can work with, but it serves a really amazing purpose in my opinion 
+// XD But jokes aside, this datatype just has few specific functions written for itself and few operators overloaded as per requirement for convenience, that's why I call it a "Niche Datatype", because agreed, it is an incomplete datatype when it comes to the range of operators it can work with, but it serves a really amazing purpose in my opinion 
 
 
 
@@ -286,6 +286,7 @@ PositiveBigInt PositiveBigInt::operator*(PositiveBigInt &obj){
 
 
 # How to use this header file: 
+
 
 --> Download this header file first 
 
