@@ -63,6 +63,7 @@ class PositiveBigInt{
         }
 
 
+        string toString();
         PositiveBigInt betweenMultiplicationAdd(PositiveBigInt& ans, PositiveBigInt& ans2, int i);
 
         friend ostream& operator<<(ostream& os, const PositiveBigInt &obj);
@@ -70,6 +71,20 @@ class PositiveBigInt{
         PositiveBigInt operator+(PositiveBigInt &obj);
         PositiveBigInt operator*(PositiveBigInt &obj);
 };
+
+
+string PositiveBigInt::toString(){
+
+    string ans = "";
+    int n = this->num.size();
+
+    for(int i=n-1; i >= 0; i--){
+        ans.push_back(this->num[i] + '0');
+    }
+
+    return ans;
+
+}
 
 
 ostream& operator<<(ostream& os, const PositiveBigInt &obj){

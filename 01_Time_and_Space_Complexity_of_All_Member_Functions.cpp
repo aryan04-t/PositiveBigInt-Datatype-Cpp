@@ -72,6 +72,7 @@ class PositiveBigInt{
             - Here, n = value of input PositiveBigInt which is being copied 
         */
 
+        string toString();
         PositiveBigInt betweenMultiplicationAdd(PositiveBigInt& ans, PositiveBigInt& ans2, int i);
 
         friend ostream& operator<<(ostream& os, const PositiveBigInt &obj);
@@ -79,6 +80,31 @@ class PositiveBigInt{
         PositiveBigInt operator+(PositiveBigInt &obj);
         PositiveBigInt operator*(PositiveBigInt &obj);
 };
+
+
+string PositiveBigInt::toString(){
+
+    string ans = "";
+    int n = this->num.size();
+
+    for(int i=n-1; i >= 0; i--){
+        ans.push_back(this->num[i] + '0');
+    }
+
+    return ans;
+
+}
+/*
+    # Time and Space Complexity of string "PositiveBigInt::toString();"  
+        --> T.C. = O(n) 
+        --> S.C. = O(n/4) = O(n)  
+    - Here, n = the length of PositiveBigInt which is calling this function 
+
+    # T.C. and S.C. w.r.t to the value of input numbers: 
+        --> T.C. = O(log(n) to the base 10) 
+        --> S.C. = O(log(n) to the base 10) 
+    - Here, n = value of PositiveBigInt which is calling this function  
+*/
 
 
 ostream& operator<<(ostream& os, const PositiveBigInt &obj){
